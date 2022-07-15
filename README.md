@@ -1,24 +1,58 @@
-# README
+# Blog App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Blog app is a classic example of a blog website. I'm creating a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby
+- Ruby on Rails
+- PostgreSQL
 
-* System dependencies
+## Getting Started
 
-* Configuration
+To get a local copy up and running follow these simple example steps.
 
-* Database creation
+### Install
 
-* Database initialization
+- Ruby
 
-* How to run the test suite
+### Setup and Usage
+- Clone the reposityory
+```
+$ git clone https://github.com/Fsher07/blog-app-rails.git
+```
+```
+$ cd blog-app-rails
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ bundle install
+```
 
-* Deployment instructions
+### Run tests
+```
+$ gem install rspec
+```
+```
+$ rspec
+```
 
-* ...
+👤 **Furkan Salim Hıdır**
+
+- GitHub: [@Fsher07](https://github.com/Fsher07)
+- Twitter: [Salim](https://twitter.com/furkansalimhdr1)
+- LinkedIn: [Furkan Salim Hıdır](https://www.linkedin.com/in/fsalimhidir/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Fsher07/blog-app-rails/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse 
