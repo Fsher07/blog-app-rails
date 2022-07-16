@@ -10,7 +10,8 @@ RSpec.describe Comment, type: :model do
   end
 
   it 'should return comments_counter incremented by 1' do
-    expect(@post.comments_counter).to eq(1)
+    @comment.update_comments_counter
+    expect(@post.comments_counter).to eq(2)
   end
 
   it 'should return correct author name' do

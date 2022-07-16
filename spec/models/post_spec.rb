@@ -2,8 +2,18 @@ RSpec.describe Post, type: :model do
   before(:all) do
     @user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
                         postscounter: 0)
+    @user2 = User.create(name: 'Alex', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
+                         postscounter: 0)
 
-    @post = Post.new(title: 'Post Title', text: 'Post text', likes_counter: 2, comments_counter: 3, author: @user)
+    @post = Post.create(title: 'Post Title', text: 'Post text', likes_counter: 2, comments_counter: 3, author: @user)
+
+    @post1 = Post.create(title: 'Post Title', text: 'Post text', likes_counter: 0, comments_counter: 0, author: @user2)
+
+    @comment1 = Comment.create(text: 'Comment text1', author: @user2, post: @post1)
+    @comment2 = Comment.create(text: 'Comment text2', author: @user2, post: @post1)
+    @comment3 = Comment.create(text: 'Comment text3', author: @user2, post: @post1)
+    @comment4 = Comment.create(text: 'Comment text4', author: @user2, post: @post1)
+    @comment5 = Comment.create(text: 'Comment text5', author: @user2, post: @post1)
   end
 
   it 'title should be present and not empty' do
@@ -12,6 +22,11 @@ RSpec.describe Post, type: :model do
 
     @post.title = ''
     expect(@post).to_not be_valid
+  end
+
+  it 'post update_post_counter method should increment postcounter' do
+    @post.update_post_counter
+    expect(@user.postscounter).to eq(1)
   end
 
   it 'title should be present' do
@@ -39,5 +54,10 @@ RSpec.describe Post, type: :model do
 
     @post.likes_counter = 19
     expect(@post).to be_valid
+  end
+
+  it 'Post recent_comments methods should return 5 comments' do
+    last = @post1.recent_comments
+    expect(last.last.text).to eq('Comment text1')
   end
 end
