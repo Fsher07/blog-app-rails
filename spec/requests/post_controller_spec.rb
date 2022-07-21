@@ -1,8 +1,8 @@
 require_relative '../rails_helper'
 
-RSpec.describe 'Users', type: :request do
+RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
-    before(:example) { get('/users') }
+    before(:example) { get('/users/4/posts') }
     it 'http status code should be 200' do
       expect(response).to have_http_status(200)
     end
@@ -15,7 +15,7 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'GET /show' do
-    before(:example) { get('/users/4') }
+    before(:example) { get('/users/4/posts/7') }
     it 'http status code should be 200' do
       expect(response).to have_http_status(200)
     end
