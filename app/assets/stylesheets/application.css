@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- .f-row {
+.f-row {
   display: flex;
 }
 
