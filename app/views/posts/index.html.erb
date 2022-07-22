@@ -1,3 +1,17 @@
-<section class="container">  
-  <h1>Here is the list of posts that belong a user</h1>
-</section>
+<%= render partial: "users/user" , locals: { user: @user } %>
+ 
+<div class="container">
+  <% @posts.each_with_index do |post, index| %>
+  <%= link_to user_post_path(@user.id, post.id), class:"text-dark text-decoration-none"  do %>
+      <%= render partial: "post" , locals: { post: post, index: index } %>
+  <% end %> 
+        <ul class="border">
+          <% post.comments.each do |comment| %>
+            <li class="list-unstyled">
+              <%= render partial: "comments/comment" , locals: { comment: comment } %>
+            </li>
+            <% end %>
+        </ul>
+        <% end %>
+       
+</div>

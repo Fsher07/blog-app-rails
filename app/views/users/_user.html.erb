@@ -1,0 +1,23 @@
+<%= link_to user do %>
+<div class="container mt-4">
+<div class="card" id="users">
+  <div class="row">
+    <div class="col-lg-4">
+      <%= image_tag('user.png', :alt => "rss feed", class: 'img-fluid rounded-start')   %>
+    </div>
+    <div class="col-lg-8">
+      <h2 class="mt-3">
+      <%= user.name %>
+    </h2>
+    <div class="d-flex w-100 justify-content-end p-3">
+    <small>
+      Number of posts: <%= user.postscounter %>
+    </small>
+    </div>
+    
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<% end %>
