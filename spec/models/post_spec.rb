@@ -26,7 +26,7 @@ RSpec.describe Post, type: :model do
 
   it 'post update_post_counter method should increment postcounter' do
     @post.update_post_counter
-    expect(@user.postscounter).to eq(1)
+    expect(@user.postscounter).to eq(2)
   end
 
   it 'title should be present' do

@@ -1,1 +1,23 @@
-<h1>Here is the a particular user</h1>
+<p style="color: green"><%= notice %></p>
+
+<%= render @user %>
+<div class="container">
+  <div class="card mt-4 p-4">
+    <h4>Bio</h4>
+    <p class="text-muted">
+      <%= @user.bio %>
+    </p>
+  </div>
+  <div>
+    <% (@user.recent_posts).each do |post, index| %>
+      <%= render partial: "posts/post" , locals: { post: post, index: index } %>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center mt-3">
+    <% if @user.postscounter > 0 %>
+      <%= link_to "See all posts" , user_posts_path(@user) %>
+    <% else %>
+      <h2>No posts for now</h2>
+    <% end %>
+  </div>
+</div>
