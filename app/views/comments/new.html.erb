@@ -1,0 +1,14 @@
+
+<section class="container">
+    <%= form_with model: @comment, url: user_post_comments_url, method: :post, local: true do |form| %>
+    
+      <div class="h-25">
+          <%= form.label :Add_New_Comment, "Add New Comment:", class:"form-label" %>
+          <%= form.text_area :text, placeholder: "Type your comment here!", rows: 20, required: true,  class: "form-control h-25 d-inline-block" %>        
+      </div>
+
+      <div>
+          <%= form.submit "Comment", class: "btn btn-primary mt-3" %>
+      </div>
+    <% end %>
+</section>
