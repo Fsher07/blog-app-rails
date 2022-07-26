@@ -8,7 +8,7 @@
       <%= render partial: "post" , locals: { post: post, index: index } %>
   <% end %> 
         <ul class="border">
-          <% post.comments.each do |comment| %>
+          <% post.comments.includes([:author]).each do |comment| %>
             <li class="list-unstyled">
               <%= render partial: "comments/comment" , locals: { comment: comment } %>
             </li>

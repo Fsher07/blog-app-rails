@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Comment.all
+    @comments = Comment.includes(:author_id)
   end
 
   def show; end
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id] || params[:id])
     @comment = Comment.new(comment_params)
     @comment.author_id = @user.id
-    @comment.post_id = @post.id
+    @comment.post = @post
 
     respond_to do |format|
       if @comment.save
