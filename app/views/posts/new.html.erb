@@ -1,0 +1,23 @@
+<h2 class="text-center">Share a new post</h2>
+
+<div class="container">
+
+  <%= form_with model: @post, url: user_posts_path, method: :post, local: true, class:"form" do |form| %>
+
+    <%= form.hidden_field :comments_counter, value: 0 %>
+    <%= form.hidden_field :likes_counter, value: 0 %>
+    
+    <div class="mb-3">
+      <%= form.label :title, class:"form-label" %>
+      <%= form.text_field :title, class:"form-control", placeholder: "Post title" %>
+    </div>
+
+    
+    <div class="mb-3">
+      <%= form.label :text, class:"form-label" %>
+      <%= form.text_area :text, class:"form-control", placeholder: "Content" %>
+    </div>
+
+    <%= form.submit :Share, class:"btn btn-primary" %>
+  <%end%>
+</div>
