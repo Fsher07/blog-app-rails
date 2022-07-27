@@ -274,6 +274,7 @@ DEPENDENCIES
   bullet
   capybara
   database_cleaner
+  database_cleaner-active_record
   debug
   importmap-rails
   jbuilder

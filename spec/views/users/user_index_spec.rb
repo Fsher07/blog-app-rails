@@ -1,33 +1,25 @@
-RSpec.describe 'Test Index Page', type: :feature do
-  describe 'GET index' do
-    before(:each) do
-      @first_user = User.create(name: 'Erinc', photo: 'user.png', bio: 'bio1', postscounter: 1)
-      @first_user.save!
-      @second_user = User.create(name: 'Salim', photo: 'user.png', bio: 'bio2', postscounter: 3)
-      @second_user.save!
-      @third_user = User.create(name: 'Saningo', photo: 'user.png', bio: 'bio3', postscounter: 5)
-      @third_user.save!
+require 'rails_helper'
+RSpec.feature 'Users Page' do
+  feature 'shows users' do
+    background do
+      visit root_path
+      @user1 = User.create(name: 'John', bio: 'This is my bio',
+                           photo: 'user.png')
+    end
+    scenario 'Shows the username' do
+      expect(@user1.name).to have_content('John')
     end
 
-    it 'shows the users username' do
-      visit root_path
-      expect(page).to have_content('Erinc')
-      expect(page).to have_content('Salim')
-      expect(page).to have_content('Saningo')
+    scenario "Shows the user's photo" do
+      all('img').each do |i|
+        expect(i[:src]).to eq('/assets/user-6a0e2461f1243cf1747e99dc288fb33916531c513a72989f49e1d8ba0606e3bd.png')
+      end
     end
 
-    it 'shows the users profile picture' do
-      visit root_path
-      expect(page).to have_css('img[src*="user.png"]')
-      expect(page).to have_css('img[src*="user.png"]')
-      expect(page).to have_css('img[src*="user.png"]')
-    end
-
-    it 'shows the number of posts of each user' do
-      visit root_path
-      expect(page).to have_content('1')
-      expect(page).to have_content('3')
-      expect(page).to have_content('5')
+    scenario 'Shows the number of posts' do
+      all(:css, '.num_post').each do |post|
+        expect(post).to have_content('Number of posts: 0')
+      end
     end
   end
 end
