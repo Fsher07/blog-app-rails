@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = Post.new(post_params)
-    @post.author_id = @user.id
+    @post.author_id = current_user.id
 
     respond_to do |format|
       if @post.save

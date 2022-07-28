@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
 <div class="post">
   <div class="comment-header border p-1">
     <div class="d-flex justify-content-between mb-3">
@@ -21,7 +21,8 @@
     <p>There no comment so far!</p>
   <% end %>
   <% @post.comments.includes([:author]).each do |comment| %>
-    <div class="comment-card">
+    <div class="comment-card row">
+    <div class="col">
       <strong>
         <%= link_to user_path(comment.author_id) do %>
           <%= comment.author.name %>
@@ -29,12 +30,24 @@
         :
       </strong>
       <%= comment.text %>
+      </div>
+      <div class="col">
+      <% if can? :destroy, comment %>
+        <%= button_to 'Delete Comment',  user_post_comment_path(@post.author, @post, comment),  method: :delete, class: "btn text-white btn-danger mt-1 p-1" %>
+      <% end %>
+      </div>
     </div>
   <% end %>
 
   <div class="button-user">
     <%= button_to "Add Comment", new_user_post_comment_path(@post.author_id, @post), method: :get, class: "btn btn-primary mt-3" %>
     <%= button_to "Like", new_user_post_like_path(@post.author, @post), method: :get, class: "btn btn-primary mt-3" %>
+     <% if can? :destroy, @post %>
+        <%= button_to "Delete Post", user_post_path(@post.author, @post), method: :delete, confirm: "Are you sure?", class: "btn btn-primary mt-3" %>
+      <% end %>
   </div>
 </div>  
+</section>
+<div class="back-button text-center">
+<%= button_to  "Back", user_posts_path(@post.author_id), method: :get, class: "btn btn-primary mt-3 text-center" %>
 </div>
